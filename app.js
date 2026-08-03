@@ -93,10 +93,18 @@ function setupEventListeners() {
     });
   });
 
-  // Search Input
+  // Search Inputs (Desktop + Mobile)
   const searchInput = document.getElementById('search-input');
+  const searchInputMobile = document.getElementById('search-input-mobile');
+
   if (searchInput) {
     searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value.toLowerCase().trim();
+      renderProducts();
+    });
+  }
+  if (searchInputMobile) {
+    searchInputMobile.addEventListener('input', (e) => {
       searchQuery = e.target.value.toLowerCase().trim();
       renderProducts();
     });
