@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TopBoyzGorillaz | Premium Streetwear Jerseys & Graphic Tees</title>
+  <meta name="description" content="Official store for TopBoyzGorillaz. Limited-edition streetwear jerseys and heavyweight graphic tees in Trinidad & Tobago. Priced 300 - 400 TTD.">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="ticker-bar">
+    <span class="fire-icon">🔥</span>
+    <span>DROP 01 LIVE | FREE TRINIDAD & TOBAGO DELIVERY ON ORDERS OVER $700 TTD | FOLLOW <a href="https://www.instagram.com/the_top_boyz_gorillaz/" target="_blank" style="color:#fff; text-decoration:underline; font-weight:800;">@THE_TOP_BOYZ_GORILLAZ</a></span>
+    <span class="fire-icon">🔥</span>
+  </div>
+
+  <!-- Header Navbar -->
+  <header class="navbar">
+    <div class="container nav-wrapper">
+      <a href="#" class="brand-logo">
+        <img src="assets/official_logo.jpg" alt="TopBoyzGorillaz Logo">
+        <span class="brand-text">TOPBOYZGORILLAZ</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#shop" class="active">Shop</a></li>
+        <li><a href="#shop" onclick="filterCategory('jersey')">Jerseys</a></li>
+        <li><a href="#shop" onclick="filterCategory('tee')">Graphic Tees</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="https://www.instagram.com/the_top_boyz_gorillaz/" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input type="text" id="search-input" placeholder="Search gear..." aria-label="Search clothing">
+        </div>
+
+        <button class="btn-icon" id="cart-btn" aria-label="Shopping Cart">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="cart-badge" id="cart-badge">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-bg-glow"></div>
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="hero-tag">
+          <i class="fa-solid fa-fire-flame-curved"></i> Drop 01 Exclusive Release
+        </div>
+        <h1 class="hero-title">
+          WEAR THE <br>
+          <span class="highlight">REBELLION.</span>
+        </h1>
+        <p class="hero-description">
+          Raw urban energy meets premium athletic performance. Authentic custom jerseys & street-cut graphic tees crafted for maximum style and comfort.
+        </p>
+        <div class="hero-ctas">
+          <a href="#shop" class="btn-primary">
+            <i class="fa-solid fa-bolt"></i> Explore Drop 01
+          </a>
+          <a href="https://www.instagram.com/the_top_boyz_gorillaz/" target="_blank" class="btn-secondary">
+            <i class="fa-brands fa-instagram"></i> @the_top_boyz_gorillaz
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="hero-card-img-wrap">
+            <img src="assets/logo_fire.jpg" alt="Flame Pro Athletic Jersey">
+            <span class="hero-card-badge">HOT RELEASE</span>
+          </div>
+          <div class="hero-card-details">
+            <div>
+              <div class="hero-card-name">Flame Pro Jersey (#28)</div>
+              <div style="font-size: 0.8rem; color: var(--text-muted);">Breathable Mesh / Custom Flame Trim</div>
+            </div>
+            <div class="hero-card-price">$380 TTD</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Highlight Bar -->
+  <section class="features-bar">
+    <div class="container features-grid">
+      <div class="feature-item">
+        <i class="fa-solid fa-truck-fast feature-icon"></i>
+        <div class="feature-text">
+          <h4>Fast Local Delivery</h4>
+          <p>Direct courier across Trinidad & Tobago</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <i class="fa-solid fa-shield-halved feature-icon"></i>
+        <div class="feature-text">
+          <h4>Heavyweight Quality</h4>
+          <p>Premium 240+ GSM cotton & athletic mesh</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <i class="fa-solid fa-gem feature-icon"></i>
+        <div class="feature-text">
+          <h4>Limited Batches</h4>
+          <p>300 TTD - 400 TTD Exclusive Drops</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shop / Catalog Section -->
+  <section class="shop-section" id="shop">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// Drop 01 Selection</span>
+        <h2 class="section-title">THE COLLECTION</h2>
+        
+        <div class="filter-bar">
+          <button class="filter-btn active" data-category="all">All Items (6)</button>
+          <button class="filter-btn" data-category="jersey">Jerseys</button>
+          <button class="filter-btn" data-category="tee">Graphic Tees</button>
+        </div>
+      </div>
+
+      <!-- Dynamic Product Grid -->
+      <div class="product-grid" id="product-grid">
+        <!-- Javascript populates 6 distinct product cards here -->
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section & Quality Guarantee -->
+  <section class="brand-story-section" id="about">
+    <div class="container story-grid">
+      <div class="story-img-frame">
+        <img src="assets/graffiti_wall.png" alt="TopBoyzGorillaz Street Culture">
+      </div>
+      <div class="story-content">
+        <span class="section-tag">// UNCOMPROMISING CRAFTSMANSHIP</span>
+        <h2>ABOUT TOPBOYZGORILLAZ</h2>
+        <p>
+          TopBoyzGorillaz was built for individuals who demand raw urban style paired with premium quality craftsmanship. We bridge Caribbean street fashion and high-performance athletic apparel.
+        </p>
+        
+        <h4 style="color:var(--accent-red); margin-top:1.5rem; margin-bottom:0.5rem; text-transform:uppercase; letter-spacing:1px; font-size:1.1rem;">
+          <i class="fa-solid fa-award"></i> Jersey & Garment Quality Highlights
+        </h4>
+        <ul style="color:var(--text-secondary); line-height:1.8; margin-left:1.25rem; font-size:0.95rem; margin-bottom:1.5rem;">
+          <li><strong>Pro-Grade Mesh Fabrics:</strong> Engineered with ultra-breathable, moisture-wicking athletic mesh designed to stay cool in warm climates.</li>
+          <li><strong>High-Density Fade-Proof Printing:</strong> Vibrant fire glow tones, skulls, and calligraphy graphics that remain crisp wash after wash.</li>
+          <li><strong>Reinforced Stitching:</strong> Double-stitched hems, heavy ribbed collars, and structured cuts built for durability during athletic or everyday wear.</li>
+        </ul>
+
+        <div style="margin-top:1.5rem;">
+          <a href="https://www.instagram.com/the_top_boyz_gorillaz/" target="_blank" class="btn-primary">
+            <i class="fa-brands fa-instagram" style="font-size:1.2rem;"></i> Follow Us on Instagram @the_top_boyz_gorillaz
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cart Drawer Overlay -->
+  <div class="cart-drawer-overlay" id="cart-drawer-overlay">
+    <div class="cart-drawer">
+      <div class="cart-drawer-header">
+        <div class="cart-drawer-title">
+          <i class="fa-solid fa-bag-shopping" style="color:var(--accent-red)"></i> YOUR BAG
+        </div>
+        <button class="btn-close-drawer" id="close-cart-btn" aria-label="Close cart">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="cart-items-body" id="cart-items-body">
+        <!-- JavaScript Populated Cart Items -->
+      </div>
+
+      <div class="cart-drawer-footer">
+        <div class="cart-summary-row">
+          <span>Subtotal</span>
+          <span id="cart-subtotal">$0 TTD</span>
+        </div>
+        <div class="cart-summary-row">
+          <span>Trinidad Delivery</span>
+          <span>Calculated at checkout</span>
+        </div>
+        <div class="cart-summary-row total">
+          <span>Total</span>
+          <span class="amount" id="cart-total">$0 TTD</span>
+        </div>
+        <button class="btn-primary" style="width:100%; justify-content:center;" id="checkout-btn">
+          <i class="fa-solid fa-lock"></i> Proceed to Order
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick View Modal -->
+  <div class="modal-overlay" id="quickview-overlay">
+    <div class="modal-container">
+      <button class="btn-close-modal" id="close-qv-btn" aria-label="Close preview">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div id="quickview-content">
+        <!-- JavaScript Populated -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Checkout Modal -->
+  <div class="modal-overlay" id="checkout-overlay">
+    <div class="modal-container" style="max-width: 600px;">
+      <button class="btn-close-modal" id="close-checkout-btn" aria-label="Close order form">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="checkout-form">
+        <h2 class="modal-title" style="margin-bottom:0.25rem;">COMPLETE YOUR ORDER</h2>
+        <p style="color:var(--text-muted); font-size:0.85rem; margin-bottom:1.5rem;">
+          Orders are confirmed instantly via WhatsApp courier dispatch in Trinidad & Tobago.
+        </p>
+
+        <div id="checkout-items-summary" style="margin-bottom:1.5rem; background:rgba(255,255,255,0.03); padding:1rem; border-radius:var(--radius-sm);">
+          <!-- Populated by JS -->
+        </div>
+
+        <form id="checkout-form">
+          <div class="form-group">
+            <label for="cust-name">Full Name *</label>
+            <input type="text" id="cust-name" class="form-control" required placeholder="e.g. Jason Rampersad">
+          </div>
+
+          <div class="form-group">
+            <label for="cust-phone">WhatsApp / Phone Number *</label>
+            <input type="tel" id="cust-phone" class="form-control" required placeholder="e.g. (868) 700-0000">
+          </div>
+
+          <div class="form-group">
+            <label for="cust-area">Delivery Location / Area *</label>
+            <input type="text" id="cust-area" class="form-control" required placeholder="e.g. Port of Spain / Chaguanas / San Fernando / Arima">
+          </div>
+
+          <div class="form-group">
+            <label for="cust-notes">Order Notes / Size Instructions</label>
+            <textarea id="cust-notes" class="form-control" rows="2" placeholder="Any specific delivery instructions..."></textarea>
+          </div>
+
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem; border-top:1px solid var(--border-light); padding-top:1rem;">
+            <div style="font-weight:bold;">Total Payable:</div>
+            <div id="checkout-total" style="font-size:1.4rem; font-weight:800; color:var(--accent-amber);">$0 TTD</div>
+          </div>
+
+          <button type="submit" class="btn-primary" style="width:100%; justify-content:center;">
+            <i class="fa-brands fa-whatsapp" style="font-size:1.2rem;"></i> Submit Order via WhatsApp
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Toast Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="brand-logo">
+            <img src="assets/official_logo.jpg" alt="TopBoyzGorillaz Logo">
+            <span class="brand-text">TOPBOYZGORILLAZ</span>
+          </a>
+          <p>
+            Exclusive streetwear jerseys and custom graphic tees. Designed for authentic street performance and culture.
+          </p>
+          <div class="social-links">
+            <a href="https://www.instagram.com/the_top_boyz_gorillaz/" target="_blank" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.instagram.com/the_top_boyz_gorillaz/" target="_blank" class="social-icon" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://www.instagram.com/the_top_boyz_gorillaz/" target="_blank" class="social-icon" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>COLLECTION</h4>
+          <ul class="footer-links">
+            <li><a href="#shop">Flame Pro Jerseys</a></li>
+            <li><a href="#shop">Skull 28 Heavy Tees</a></li>
+            <li><a href="#shop">Graffiti Wall Series</a></li>
+            <li><a href="#shop">Limited Drops</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>CONNECT</h4>
+          <ul class="footer-links">
+            <li><a href="https://www.instagram.com/the_top_boyz_gorillaz/" target="_blank"><i class="fa-brands fa-instagram"></i> @the_top_boyz_gorillaz</a></li>
+            <li><a href="#about">Quality Guarantee</a></li>
+            <li><a href="#about">About TopBoyzGorillaz</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>LOCATIONS</h4>
+          <p style="color:var(--text-muted); font-size:0.88rem; line-height:1.6;">
+            Trinidad & Tobago Nationwide Shipping.<br>
+            Pickup & Delivery across POS, Chaguanas, San Fernando & Tobago.
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 TOPBOYZGORILLAZ. All rights reserved.</div>
+        <div>Follow <a href="https://www.instagram.com/the_top_boyz_gorillaz/" target="_blank" style="color:var(--accent-red); text-decoration:underline;">@the_top_boyz_gorillaz</a> on Instagram</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- App Script -->
+  <script src="app.js"></script>
+</body>
+</html>
