@@ -9,6 +9,9 @@
   --bg-card: #111114;
   --bg-card-hover: #18181d;
   --bg-modal: #121215;
+  --bg-nav: rgba(7, 7, 8, 0.92);
+  --bg-input: rgba(255, 255, 255, 0.05);
+  --bg-input-focus: rgba(255, 255, 255, 0.08);
   --accent-red: #ff2a2a;
   --accent-red-bright: #ff4d4d;
   --accent-red-glow: rgba(255, 42, 42, 0.35);
@@ -19,6 +22,8 @@
   --text-muted: #71717a;
   --border-light: rgba(255, 255, 255, 0.08);
   --border-red: rgba(255, 42, 42, 0.25);
+  --brand-text-color: linear-gradient(135deg, #ffffff 40%, var(--accent-red) 100%);
+  --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
   --font-headline: 'Bebas Neue', cursive, sans-serif;
   --font-body: 'Plus Jakarta Sans', sans-serif;
   --radius-sm: 6px;
@@ -27,6 +32,28 @@
   --radius-full: 9999px;
   --transition-fast: 0.2s ease;
   --transition-normal: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme="light"] {
+  --bg-dark: #f4f4f8;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f8f8fc;
+  --bg-modal: #ffffff;
+  --bg-nav: rgba(255, 255, 255, 0.94);
+  --bg-input: rgba(0, 0, 0, 0.04);
+  --bg-input-focus: rgba(0, 0, 0, 0.07);
+  --accent-red: #e60000;
+  --accent-red-bright: #ff1a1a;
+  --accent-red-glow: rgba(230, 0, 0, 0.2);
+  --accent-orange: #e65c00;
+  --accent-amber: #d97706;
+  --text-main: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --border-light: rgba(0, 0, 0, 0.1);
+  --border-red: rgba(230, 0, 0, 0.25);
+  --brand-text-color: linear-gradient(135deg, #0f172a 40%, var(--accent-red) 100%);
+  --card-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
 }
 
 /* Reset & Global */
@@ -105,7 +132,7 @@ html, body {
   position: sticky;
   top: 0;
   z-index: 90;
-  background: rgba(7, 7, 8, 0.92);
+  background: var(--bg-nav);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border-light);
@@ -144,7 +171,7 @@ html, body {
   font-size: 1.65rem;
   letter-spacing: 1.2px;
   line-height: 1;
-  background: linear-gradient(135deg, #ffffff 40%, var(--accent-red) 100%);
+  background: var(--brand-text-color);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   white-space: nowrap;
@@ -202,7 +229,7 @@ html, body {
 }
 
 .search-box input {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--bg-input);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-full);
   padding: 0.45rem 0.85rem 0.45rem 2.1rem;
@@ -216,7 +243,7 @@ html, body {
 .search-box input:focus {
   width: 190px;
   border-color: var(--accent-red);
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--bg-input-focus);
   box-shadow: 0 0 10px rgba(255, 42, 42, 0.2);
 }
 
@@ -231,7 +258,7 @@ html, body {
 }
 
 .btn-icon {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--bg-input);
   border: 1px solid var(--border-light);
   color: var(--text-main);
   width: 38px;
@@ -1148,14 +1175,20 @@ html, body {
 
 .form-control {
   width: 100%;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--bg-input);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-sm);
   padding: 0.65rem 0.85rem;
-  color: #fff;
+  color: var(--text-main);
   font-family: var(--font-body);
   font-size: 0.85rem;
   outline: none;
+  transition: var(--transition-fast);
+}
+
+.form-control:focus {
+  border-color: var(--accent-red);
+  background: var(--bg-input-focus);
 }
 
 /* Toast Notifications */
@@ -1174,10 +1207,10 @@ html, body {
 .toast {
   background: var(--bg-card);
   border: 1px solid var(--border-red);
-  color: #fff;
+  color: var(--text-main);
   padding: 0.75rem 1rem;
   border-radius: var(--radius-sm);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
   gap: 0.6rem;
@@ -1187,7 +1220,7 @@ html, body {
 
 /* Footer */
 .footer {
-  background: #040405;
+  background: var(--bg-card);
   border-top: 1px solid var(--border-light);
   padding: 3.5rem 0 1.75rem;
 }

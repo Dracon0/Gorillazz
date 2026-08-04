@@ -2,68 +2,67 @@
    TopBoyzGorillaz - Streetwear E-Commerce Logic
    ========================================================================== */
 
-// Product Dataset using strictly the user's authentic brand graphics
-// Prices strictly between 300 TTD and 400 TTD
+// Authentic New Drops Dataset
 const PRODUCTS = [
   {
     id: 'tb-01',
-    name: "Flame Pro Athletic Jersey (#28)",
-    category: "jersey",
-    price: 380,
-    badge: "Bestseller",
-    image: "assets/logo_fire.jpg",
-    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    description: "Premium moisture-wicking performance mesh jersey featuring signature fire skull graphics and bold #28 details. Engineered with double-stitched seams and vibrant fade-resistant print."
-  },
-  {
-    id: 'tb-02',
-    name: "Gorillaz '28 Skull Heavyweight Tee",
-    category: "tee",
-    price: 320,
-    badge: "New Drop",
-    image: "assets/skull_28.png",
-    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    description: "240 GSM organic combed cotton tee with signature cracked white skull centerpiece and high-density red Gorillaz typography."
-  },
-  {
-    id: 'tb-03',
-    name: "Street Graffiti Wall Mesh Jersey",
-    category: "jersey",
-    price: 390,
-    badge: "Limited Edition",
-    image: "assets/graffiti_wall.png",
-    sizes: ['M', 'L', 'XL', 'XXL'],
-    description: "Urban spray-paint aesthetic soccer style jersey. Features vibrant wall mural graphics, breathable athletic weave, and heat-sealed TopBoyz emblem."
-  },
-  {
-    id: 'tb-04',
-    name: "Red G-Logo Flame Heavyweight Tee",
-    category: "tee",
-    price: 300,
-    badge: "Essential",
-    image: "assets/logo_fire.jpg",
-    sizes: ['S', 'M', 'L', 'XL'],
-    description: "Signature TopBoyz ember graphic printed on premium obsidian dark cotton. Features iconic red fire glow detailing."
-  },
-  {
-    id: 'tb-05',
-    name: "Gorillaz 28 Vintage Skull Cut Tee",
+    name: "Gorillaz 'Trust No One' White Tee",
     category: "tee",
     price: 340,
     badge: "Hot Drop",
-    image: "assets/skull_28.png",
+    image: "assets/753676786_1948493995856098_2346800060799581386_n.jpg",
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    description: "Monochrome contrast graphic with distressed bone texture and fiery red numbers. Heavyweight collar structure and relaxed street fit."
+    description: "Clean white 240 GSM organic cotton tee featuring red baseball helmet skull front print and bold 'Trust No One' back centerpiece graphic."
+  },
+  {
+    id: 'tb-02',
+    name: "Gorillaz Curry #30 Vintage Tee",
+    category: "tee",
+    price: 360,
+    badge: "Pre-Order",
+    image: "assets/753880655_2822684394781672_4284418812769326874_n.jpg",
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+    description: "Monochrome urban street tee featuring stone-textured Curry #30 back graphic and signature vertical Gorillaz typography."
+  },
+  {
+    id: 'tb-03',
+    name: "Gorillaz 'Untouchable' Green Flame Tee",
+    category: "tee",
+    price: 350,
+    badge: "New Release",
+    image: "assets/592131248_1797095018402956_3237609594863913173_n.jpg",
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+    description: "Dark street tee featuring toxic green flame skull artwork, green Gorillaz headline print, and 'Untouchable' back skull emblem."
+  },
+  {
+    id: 'tb-04',
+    name: "Gorillaz 'Out Of Control' Blue Athletic Jersey (#00)",
+    category: "jersey",
+    price: 380,
+    badge: "Pre-Order Exclusive",
+    image: "assets/752838541_1041334218780695_2697468517163625741_n.png",
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+    description: "Electric blue athletic baseball jersey featuring #00 back detailing, skull graphics, and 'Out of Control' circular back emblem."
+  },
+  {
+    id: 'tb-05',
+    name: "Gorillaz 'Since 2006' Fire Melt Tee",
+    category: "tee",
+    price: 350,
+    badge: "Limited Edition",
+    image: "assets/759372874_1724970205373123_2047398877770486621_n.png",
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+    description: "Distressed obsidian cotton tee with fiery red face melt centerpiece and circular 'Gorillaz Since 2006' back skull artwork."
   },
   {
     id: 'tb-06',
-    name: "Gorillaz Graffiti Urban Jersey",
-    category: "jersey",
-    price: 360,
-    badge: "Drop 01",
-    image: "assets/graffiti_wall.png",
-    sizes: ['S', 'M', 'L', 'XL'],
-    description: "High-grade performance stretch mesh jersey featuring custom urban tag art and durable fade-proof fabric for maximum durability."
+    name: "Gorillaz 'Undefeated' Monochrome Tee",
+    category: "tee",
+    price: 330,
+    badge: "Essential",
+    image: "assets/758304337_1420003293381532_3061391493215262489_n.jpg",
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+    description: "Minimalist front chest emblem paired with high-density distressed monochrome skull and 'Undefeated' back typography."
   }
 ];
 
@@ -72,16 +71,48 @@ let cart = JSON.parse(localStorage.getItem('tb_cart')) || [];
 let activeCategory = 'all';
 let searchQuery = '';
 let selectedSizes = {}; // productId -> size
+let currentTheme = localStorage.getItem('tb_theme') || 'dark';
 
-// DOM Elements
+// DOM Initialization
 document.addEventListener('DOMContentLoaded', () => {
+  initTheme();
   renderProducts();
   updateCartBadge();
   setupEventListeners();
 });
 
+// Theme Management Functions
+function initTheme() {
+  document.documentElement.setAttribute('data-theme', currentTheme);
+  updateThemeIcon();
+}
+
+function toggleTheme() {
+  currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', currentTheme);
+  localStorage.setItem('tb_theme', currentTheme);
+  updateThemeIcon();
+  showToast(`Switched to ${currentTheme === 'dark' ? 'Dark Mode 🌙' : 'Light Mode ☀️'}`);
+}
+
+function updateThemeIcon() {
+  const btn = document.getElementById('theme-toggle-btn');
+  if (btn) {
+    btn.innerHTML = currentTheme === 'dark' 
+      ? '<i class="fa-solid fa-sun"></i>' 
+      : '<i class="fa-solid fa-moon"></i>';
+    btn.title = currentTheme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode';
+  }
+}
+
 // Setup Event Listeners
 function setupEventListeners() {
+  // Theme Switcher Toggle
+  const themeToggleBtn = document.getElementById('theme-toggle-btn');
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', toggleTheme);
+  }
+
   // Category Filter Buttons
   const filterBtns = document.querySelectorAll('.filter-btn');
   filterBtns.forEach(btn => {
@@ -184,7 +215,7 @@ function renderProducts() {
       <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 1rem; color: var(--text-muted);">
         <i class="fa-solid fa-ghost" style="font-size: 3rem; margin-bottom: 1rem; color: var(--accent-red);"></i>
         <h3>No gear found matching "${searchQuery}"</h3>
-        <p>Try searching for jerseys or skull tees!</p>
+        <p>Try searching for jerseys or graphic tees!</p>
       </div>
     `;
     return;
@@ -221,7 +252,7 @@ function renderProducts() {
           <div class="product-bottom-row">
             <div class="product-price">$${prod.price} <span class="currency">TTD</span></div>
             <button class="btn-add-cart" onclick="addToCart('${prod.id}')">
-              <i class="fa-solid fa-cart-plus"></i> Add
+              <i class="fa-solid fa-fire"></i> Pre-Order
             </button>
           </div>
         </div>
@@ -276,7 +307,7 @@ function addToCart(prodId, chosenSize = null) {
 
   saveCart();
   updateCartBadge();
-  showToast(`Added ${prod.name} (${size}) to cart! 🔥`);
+  showToast(`Pre-ordered ${prod.name} (${size})! 🔥`);
 }
 
 function updateQty(prodId, size, delta) {
@@ -309,8 +340,8 @@ function renderCartBody() {
     container.innerHTML = `
       <div class="cart-empty-state">
         <i class="fa-solid fa-basket-shopping"></i>
-        <h4>Your cart is empty</h4>
-        <p>Grab your TopBoyz jersey or graphic tee before Drop 01 sells out!</p>
+        <h4>Your pre-order bag is empty</h4>
+        <p>Reserve your TopBoyz jersey or graphic tee before Drop 01 pre-order closes!</p>
       </div>
     `;
     if (subtotalEl) subtotalEl.textContent = '$0 TTD';
@@ -392,7 +423,7 @@ function openQuickView(prodId) {
           </div>
 
           <button class="btn-primary" style="width:100%; justify-content:center;" onclick="addToCartFromQv('${prod.id}')">
-            <i class="fa-solid fa-fire"></i> Add To Bag - $${prod.price} TTD
+            <i class="fa-solid fa-fire"></i> Pre-Order Now - $${prod.price} TTD
           </button>
         </div>
       </div>
@@ -435,7 +466,7 @@ function closeQuickView() {
 // Checkout Modal Logic
 function openCheckout() {
   if (cart.length === 0) {
-    showToast("Your cart is empty! Add items first. 🛒");
+    showToast("Your pre-order bag is empty! Add items first. 🛒");
     return;
   }
   closeCart();
@@ -485,7 +516,7 @@ function handleCheckoutSubmit(e) {
   const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
   const itemsText = cart.map(item => `- ${item.qty}x ${item.name} [Size: ${item.size}]`).join('%0A');
   
-  const whatsappMsg = `🔥 *NEW TOPBOYZGORILLAZ ORDER*%0A%0A*Customer:* ${encodeURIComponent(name)}%0A*Phone:* ${encodeURIComponent(phone)}%0A*Delivery Location:* ${encodeURIComponent(area)}%0A*Notes:* ${encodeURIComponent(notes)}%0A%0A*ITEMS:*%0A${itemsText}%0A%0A*TOTAL AMOUNT:* $${total} TTD`;
+  const whatsappMsg = `🔥 *NEW TOPBOYZGORILLAZ PRE-ORDER*%0A%0A*Customer:* ${encodeURIComponent(name)}%0A*Phone:* ${encodeURIComponent(phone)}%0A*Preferred Pickup Location:* ${encodeURIComponent(area)}%0A*Notes:* ${encodeURIComponent(notes)}%0A%0A*PRE-ORDER ITEMS:*%0A${itemsText}%0A%0A*TOTAL AMOUNT:* $${total} TTD`;
 
   // Clear cart
   cart = [];
@@ -493,7 +524,7 @@ function handleCheckoutSubmit(e) {
   updateCartBadge();
   closeCheckout();
 
-  showToast("Order submitted! Opening WhatsApp... 🚀");
+  showToast("Pre-order submitted! Opening WhatsApp... 🚀");
 
   setTimeout(() => {
     window.open(`https://api.whatsapp.com/send?text=${whatsappMsg}`, '_blank');
